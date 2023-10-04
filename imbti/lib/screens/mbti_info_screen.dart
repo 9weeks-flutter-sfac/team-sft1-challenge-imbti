@@ -26,7 +26,7 @@ class MBTIInfoScreen extends StatelessWidget {
         ),
       ),
       body: PageView.builder(
-        controller: PageController(viewportFraction: 0.8),
+        controller: PageController(viewportFraction: 0.65),
         itemCount: mbtiList.length,
         itemBuilder: (context, index) {
           return Center(
