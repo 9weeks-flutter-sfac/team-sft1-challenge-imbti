@@ -26,6 +26,7 @@ class MBTIInfoScreen extends StatelessWidget {
         ),
       ),
       body: PageView.builder(
+        controller: PageController(viewportFraction: 0.8),
         itemCount: mbtiList.length,
         itemBuilder: (context, index) {
           return Center(
@@ -38,7 +39,17 @@ class MBTIInfoScreen extends StatelessWidget {
                     height: 350,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.black),
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 2,
+                      ),
+                      color: AppColors.b9,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
