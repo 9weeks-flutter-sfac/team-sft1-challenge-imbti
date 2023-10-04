@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imbti/const/question_list.dart';
+import 'package:imbti/styles/app_colors.dart';
 
 class MainDrawer extends StatefulWidget {
   final PageController pageController;
@@ -24,13 +25,31 @@ class _MainDrawerState extends State<MainDrawer> {
                 Navigator.pop(context);
               },
               child: ListTile(
-                title: Text(
-                  '문제 ${index + 1}',
-                  textAlign: TextAlign.center,
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: Text(
+                        '문제 ${index + 1}',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    widget.isChecked[index]
+                        ? Icon(
+                            Icons.check_circle_outline,
+                            color: AppColors.p4Color,
+                          )
+                        : Icon(
+                            Icons.circle_outlined,
+                            color: AppColors.b1,
+                          ),
+                  ],
                 ),
-                trailing: widget.isChecked[index]
-                    ? Icon(Icons.check_circle_outline)
-                    : Icon(Icons.circle_outlined),
               ),
             );
           }),
