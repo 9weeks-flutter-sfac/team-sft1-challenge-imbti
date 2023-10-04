@@ -167,8 +167,13 @@ class MBTIInfoScreen extends StatelessWidget {
                             style: AppTextStyles.header24(),
                           ),
                           SizedBox(height: 20),
-                          Text(
-                            description[mbtiList[index].type],
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Text(
+                              description[mbtiList[index].type],
+                              style: AppTextStyles.regular,
+                            ),
                           ),
                         ],
                       ),
