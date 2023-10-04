@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:imbti/const/description_map.dart';
 import 'package:imbti/const/mbti_data.dart';
 import 'package:imbti/models/mbti_model.dart';
+import 'package:imbti/models/result_model.dart';
 import 'package:imbti/styles/app_colors.dart';
 import 'package:imbti/styles/app_text_style.dart';
 import 'package:imbti/widgets/strength_chip.dart';
@@ -95,16 +97,71 @@ class MBTIInfoScreen extends StatelessWidget {
                   alignment: Alignment(0, 0.5),
                   child: InkWell(
                     onTap: () {
-                      showBottomSheet(
-                        context: context,
-                        builder: (_) => Container(),
-                      );
+                      showDraggableBottomSheet(context, mbtiList, index);
                     },
                     child: Image.asset(
                       'assets/images/list_icon.png',
                       width: 42,
                       height: 42,
                     ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  void showDraggableBottomSheet(
+      BuildContext context, List<MBTIModel> mbtiList, int index) {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      context: context,
+      builder: (_) => DraggableScrollableSheet(
+        initialChildSize: 0.6,
+        maxChildSize: 0.9,
+        snap: true,
+        snapSizes: [0.6, 0.9],
+        builder: (BuildContext context, ScrollController scrollController) {
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+            ),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 30),
+                  child: Container(
+                    width: 120,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: AppColors.b1,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ListView(
+                    shrinkWrap: true,
+                    controller: scrollController,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            mbtiList[index].type,
+                            style: AppTextStyles.header24(),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            description[mbtiList[index].type],
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ],
