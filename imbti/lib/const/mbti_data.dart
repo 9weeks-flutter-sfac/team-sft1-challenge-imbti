@@ -1,0 +1,98 @@
+List<Map<String, dynamic>> mbtiData = [
+  {
+    'type': "ISTJ",
+    'description': "엄격한 관리자",
+    'strengths': ["체계", "신뢰", "사실"],
+    'weaknesses': ["융통성 부족", "과도하게 현실적", "감정 표현이 어려움"],
+  },
+  {
+    'type': "ISFJ",
+    'description': "용감한 수호자",
+    'strengths': ["세심", "헌신", "따뜻"],
+    'weaknesses': ["너무 순진함", "경계가 없음", "자기 자신을 희생"],
+  },
+  {
+    'type': "INFJ",
+    'description': "옹호하는 카운셀러",
+    'strengths': ["통찰", "이해", "헌신"],
+    'weaknesses': ["쉽게 상처받음", "이상주의적", "비현실적"],
+  },
+  {
+    'type': "INTJ",
+    'description': "전략적 비전가",
+    'strengths': ["독립", "전략", "효과"],
+    'weaknesses': ["너무 비판적", "내향적", "융통성 부족"],
+  },
+  {
+    'type': "ISTP",
+    'description': "다재다능한 해결사",
+    'strengths': ["실용", "적응", "분석"],
+    'weaknesses': ["위험을 감수", "감정 표현 어려움", "계획성 부족"],
+  },
+  {
+    'type': "ISFP",
+    'description': "예술가형",
+    'strengths': ["융통", "친절", "실제"],
+    'weaknesses': ["쉽게 상처받음", "의사결정 어려움", "경쟁을 피함"],
+  },
+  {
+    'type': "INFP",
+    'description': "열정적인 중재자",
+    'strengths': ["이상", "따뜻", "창조"],
+    'weaknesses': ["비현실적", "자기 중심적", "결정이 어려움"],
+  },
+  {
+    'type': "INTP",
+    'description': "논리적인 사색가",
+    'strengths': ["분석", "독립", "창조"],
+    'weaknesses': ["감정 표현 부족", "비판적", "사회성 부족"],
+  },
+  {
+    'type': "ESTP",
+    'description': "자발적인 모험가",
+    'strengths': ["에너지", "관찰력", "실용"],
+    'weaknesses': ["위험 감수", "충동적", "계획 부족"],
+  },
+  {
+    'type': "ESFP",
+    'description': "자유로운 연예인",
+    'strengths': ["사교", "친절", "적응"],
+    'weaknesses': ["쉽게 산만해짐", "비효율적", "충동적"],
+  },
+  {
+    'type': "ENFP",
+    'description': "열정적인 홍보대사",
+    'strengths': ["창조", "열정", "친절"],
+    'weaknesses': ["쉽게 분산됨", "과도한 감정", "일관성 부족"],
+  },
+  {
+    'type': "ENTP",
+    'description': "논쟁을 좋아하는 변론가",
+    'strengths': ["창의", "토론", "지식"],
+    'weaknesses': ["목표 지향적이지 않음", "쉽게 지루해짐", "충동적"],
+  },
+  {
+    'type': "ESTJ",
+    'description': "효과적인 지휘관",
+    'strengths': ["조직", "사실", "결정"],
+    'weaknesses': ["융통성 부족", "너무 지배적", "감정 표현 부족"],
+  },
+  {
+    'type': "ESFJ",
+    'description': "사교적인 외교관",
+    'strengths': ["사교", "헌신", "세심"],
+    'weaknesses': ["너무 사교적", "상처받기 쉬움", "승인을 필요로 함"],
+  },
+  {
+    'type': "ENFJ",
+    'description': "정열적인 선생님",
+    'strengths': ["이해", "사교", "영감"],
+    'weaknesses': ["너무 이상주의적", "상처받기 쉬움", "경계가 없음"],
+  },
+  {
+    'type': "ENTJ",
+    'description': "대담한 지도자",
+    'strengths': ["효과", "전략", "확신"],
+    'weaknesses': ["지배적", "너무 비판적", "감정 표현 부족"],
+  },
+];
