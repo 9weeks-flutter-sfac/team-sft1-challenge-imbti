@@ -6,6 +6,7 @@ import 'package:imbti/models/questions_model.dart';
 import 'package:imbti/models/result_model.dart';
 import 'package:imbti/screens/reulst_screen.dart';
 import 'package:imbti/styles/app_colors.dart';
+import 'package:imbti/widgets/main_button.dart';
 import 'package:imbti/widgets/main_drawer.dart';
 
 class TestScreen extends StatefulWidget {
@@ -76,7 +77,9 @@ class _TestScreenState extends State<TestScreen> {
                           ),
                           Container(
                             width: 250,
-                            height: 250,
+                            constraints: BoxConstraints(
+                              minHeight: 250,
+                            ),
                             padding: EdgeInsets.all(16),
                             margin: EdgeInsets.all(8),
                             decoration: BoxDecoration(
@@ -94,65 +97,96 @@ class _TestScreenState extends State<TestScreen> {
                               ],
                             ),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
+                                  textAlign: TextAlign.start,
                                   questionList[index].content,
                                   style: TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                ListTile(
-                                  leading: Checkbox(
-                                    checkColor: AppColors.p1Color,
-                                    activeColor: AppColors.p4Color,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    value: isAChecked[index],
-                                    onChanged: (bool? value) {
-                                      setState(() {
-                                        if (value == true) {
-                                          isBChecked[index] = false;
-                                        }
-                                        isAChecked[index] = value!;
-                                        scoring.scoringMBTI(
-                                            'A', questionList[index]);
-                                        _pageController.nextPage(
-                                          duration: Duration(milliseconds: 300),
-                                          curve: Curves.easeIn,
-                                        );
-                                        isChecked[index] = value;
-                                      });
-                                    },
+                                Container(
+                                  padding: EdgeInsets.symmetric(vertical: 8),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      ListTile(
+                                        leading: Checkbox(
+                                          materialTapTargetSize:
+                                              MaterialTapTargetSize.shrinkWrap,
+                                          checkColor: AppColors.p1Color,
+                                          activeColor: AppColors.p4Color,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                          value: isAChecked[index],
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              if (value == true) {
+                                                isBChecked[index] = false;
+                                              }
+                                              isAChecked[index] = value!;
+                                              scoring.scoringMBTI(
+                                                  'A', questionList[index]);
+                                              _pageController.nextPage(
+                                                duration:
+                                                    Duration(milliseconds: 300),
+                                                curve: Curves.easeIn,
+                                              );
+                                              isChecked[index] = value;
+                                            });
+                                          },
+                                        ),
+                                        title: Text(
+                                          questionList[index].answerA,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ),
+                                      ListTile(
+                                        leading: Checkbox(
+                                          materialTapTargetSize:
+                                              MaterialTapTargetSize.shrinkWrap,
+                                          checkColor: AppColors.p1Color,
+                                          activeColor: AppColors.p4Color,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                          value: isBChecked[index],
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              if (value == true) {
+                                                isAChecked[index] = false;
+                                              }
+                                              isBChecked[index] = value!;
+                                              scoring.scoringMBTI(
+                                                  'B', questionList[index]);
+                                              _pageController.nextPage(
+                                                duration:
+                                                    Duration(milliseconds: 300),
+                                                curve: Curves.easeIn,
+                                              );
+                                              isChecked[index] = value;
+                                            });
+                                          },
+                                        ),
+                                        title: Text(
+                                          questionList[index].answerB,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  title: Text(questionList[index].answerA),
-                                ),
-                                ListTile(
-                                  leading: Checkbox(
-                                    checkColor: AppColors.p1Color,
-                                    activeColor: AppColors.p4Color,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    value: isBChecked[index],
-                                    onChanged: (bool? value) {
-                                      setState(() {
-                                        if (value == true) {
-                                          isAChecked[index] = false;
-                                        }
-                                        isBChecked[index] = value!;
-                                        scoring.scoringMBTI(
-                                            'B', questionList[index]);
-                                        _pageController.nextPage(
-                                          duration: Duration(milliseconds: 300),
-                                          curve: Curves.easeIn,
-                                        );
-                                        isChecked[index] = value;
-                                      });
-                                    },
-                                  ),
-                                  title: Text(questionList[index].answerB),
                                 ),
                               ],
                             ),
@@ -165,21 +199,24 @@ class _TestScreenState extends State<TestScreen> {
               ),
             ),
             if (allAnswered)
-              ElevatedButton(
-                onPressed: () {
-                  final result = scoring.getResult();
-                  // print(result);
-                  ResultModel resultModel = ResultModel(
-                      mbti: result, description: description[result]);
-                  // print(resultModel.mbti);
-                  // print(resultModel.description);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) =>
-                              ResultScreen(resultModel: resultModel)));
-                },
-                child: Text('결과보기'),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: MainButton(
+                  onTap: () {
+                    final result = scoring.getResult();
+                    // print(result);
+                    ResultModel resultModel = ResultModel(
+                        mbti: result, description: description[result]);
+                    // print(resultModel.mbti);
+                    // print(resultModel.description);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) =>
+                                ResultScreen(resultModel: resultModel)));
+                  },
+                  buttonText: '결과보기',
+                ),
               ),
           ],
         ),
