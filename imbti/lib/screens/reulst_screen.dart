@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imbti/models/result_model.dart';
+import 'package:imbti/screens/test_screen.dart';
 import 'package:imbti/widgets/main_button.dart';
 
 class ResultScreen extends StatelessWidget {
@@ -8,7 +9,7 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool bottomOpen = false;
+    String src = '${resultModel.mbti}'.toLowerCase();
     return Scaffold(
       backgroundColor: Color(0xffF8F5F5),
       body: Column(
@@ -25,19 +26,19 @@ class ResultScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 100,
+                      height: 150,
                     ),
                     Text(
                       '${resultModel.mbti}',
                       style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 50,
+                        fontWeight: FontWeight.w900,
                       ),
                     ),
-                    Text(
-                      'MBTI 별칭',
-                      style: TextStyle(fontSize: 25),
-                    ),
+                    // Text(
+                    //   'MBTI 별칭',
+                    //   style: TextStyle(fontSize: 25),
+                    // ),
                   ],
                 ),
                 Container(
@@ -45,7 +46,7 @@ class ResultScreen extends StatelessWidget {
                     width: 200,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                      image: AssetImage('assets/images/isfp.png'),
+                      image: AssetImage('assets/images/' + src + '.png'),
                     )))
               ],
             ),
@@ -96,9 +97,7 @@ class ResultScreen extends StatelessWidget {
                     Container(
                       alignment: Alignment.bottomRight,
                       child: TextButton(
-                        onPressed: () {
-                          bottomOpen = !bottomOpen;
-                        },
+                        onPressed: () {},
                         child: Text(
                           '자세히 보기 >',
                           style: TextStyle(color: Colors.grey[600]),
@@ -113,7 +112,13 @@ class ResultScreen extends StatelessWidget {
           SizedBox(
             height: 60,
           ),
-          Center(child: MainButton(onTap: () {}, buttonText: '다시 검사하기'))
+          Center(
+              child: MainButton(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => TestScreen()));
+                  },
+                  buttonText: '다시 검사하기'))
         ],
       ),
     );
