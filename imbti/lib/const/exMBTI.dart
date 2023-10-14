@@ -1,6 +1,6 @@
 // MBTI 설명
 // 결과 창의 결과 밑에 삽입
-Map<String, String> mbtiCompatibility = {
+Map<String, String> mbtiName = {
   "ESTJ": "엄격한 관리자",
   "ESTP": "모험을 즐기는 사업가",
   "ESFJ": "사교적인 외교관",

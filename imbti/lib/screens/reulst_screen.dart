@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imbti/const/description_map.dart';
+import 'package:imbti/const/exMBTI.dart';
+
 import 'package:imbti/const/mbti_data.dart';
 import 'package:imbti/models/mbti_model.dart';
 import 'package:imbti/models/result_model.dart';
@@ -16,45 +18,40 @@ class ResultScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<MBTIModel> mbtiList =
         mbtiData.map((data) => MBTIModel.fromMap(data)).toList();
-    String src = '${resultModel.mbti}'.toLowerCase();
+    String src = resultModel.mbti.toLowerCase();
     return Scaffold(
       backgroundColor: Color(0xffF8F5F5),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.only(
               left: 80,
             ),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 150,
-                    ),
                     Text(
-                      '${resultModel.mbti}',
+                      resultModel.mbti,
                       style: TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.w900,
                       ),
                     ),
-                    // Text(
-                    //   'MBTI 별칭',
-                    //   style: TextStyle(fontSize: 25),
-                    // ),
+                    Text(mbtiName['${resultModel.mbti.toUpperCase()}']!),
                   ],
                 ),
                 Container(
-                    height: 200,
-                    width: 200,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
+                  height: 150,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
                       image: AssetImage('assets/images/' + src + '.png'),
-                    )))
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -95,7 +92,7 @@ class ResultScreen extends StatelessWidget {
                     Container(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        '${resultModel.description}',
+                        resultModel.description,
                         style: TextStyle(
                           fontSize: 18,
                         ),
@@ -105,7 +102,7 @@ class ResultScreen extends StatelessWidget {
                       alignment: Alignment.bottomRight,
                       child: TextButton(
                         onPressed: () {
-                          showDraggableBottomSheet(context, mbtiList);
+                          showDraggableBottomSheet(context);
                         },
                         child: Text(
                           '자세히 보기 >',
@@ -133,8 +130,7 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  void showDraggableBottomSheet(
-      BuildContext context, List<MBTIModel> mbtiList) {
+  void showDraggableBottomSheet(BuildContext context) {
     showModalBottomSheet(
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
@@ -179,7 +175,7 @@ class ResultScreen extends StatelessWidget {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Text(
-                              description[resultModel.mbti.toLowerCase()],
+                              description[resultModel.mbti.toUpperCase()],
                               style: AppTextStyles.regular,
                             ),
                           ),
