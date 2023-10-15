@@ -10,11 +10,18 @@ class AppTextStyles {
   static const light =
       TextStyle(fontFamily: 'Pretendard', fontWeight: FontWeight.w300);
 
-  static TextStyle header32({Color color = Colors.black}) =>
+  static TextStyle header32({
+    Color color = Colors.black,
+  }) =>
       semiBold.copyWith(fontSize: 32, color: color);
-  static TextStyle header24({Color color = Colors.black}) =>
-      semiBold.copyWith(fontSize: 24, color: color);
+  static TextStyle header24(
+          {Color color = Colors.black,
+          Color? backgroundColor = Colors.transparent}) =>
+      semiBold.copyWith(
+          fontSize: 24, color: color, backgroundColor: backgroundColor);
   static TextStyle header20({Color color = Colors.black}) =>
+      medium.copyWith(fontSize: 20, color: color);
+  static TextStyle header20B({Color color = Colors.black}) =>
       semiBold.copyWith(fontSize: 20, color: color);
   static TextStyle body16B({Color color = Colors.black}) =>
       semiBold.copyWith(fontSize: 16, color: color);
@@ -23,7 +30,7 @@ class AppTextStyles {
   static TextStyle body14B({Color color = Colors.black}) =>
       semiBold.copyWith(fontSize: 14, color: color);
   static TextStyle body14M({Color color = Colors.black}) =>
-      medium.copyWith(fontSize: 12, color: color);
+      medium.copyWith(fontSize: 14, color: color);
   static TextStyle body12B({Color color = Colors.black}) =>
       semiBold.copyWith(fontSize: 12, color: color);
   static TextStyle body12M({Color color = Colors.black}) =>

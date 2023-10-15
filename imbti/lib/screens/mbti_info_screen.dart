@@ -96,6 +96,26 @@ class _MBTIInfoScreenState extends State<MBTIInfoScreen> {
                             ),
                           ],
                         ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment(0, -0.5),
+                      child: Image.asset(
+                        'assets/images/${mbtiList[index].type.toLowerCase()}.png',
+                        width: 120,
+                        height: 200,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        width: 180,
+                        height: 260,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.transparent,
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Column(
@@ -104,13 +124,15 @@ class _MBTIInfoScreenState extends State<MBTIInfoScreen> {
                             children: [
                               Text(
                                 mbtiList[index].type,
-                                style: AppTextStyles.header24(),
+                                style: AppTextStyles.header24(
+                                  backgroundColor: Colors.white,
+                                ),
                               ),
                               Text(
                                 mbtiList[index].description,
                                 style: AppTextStyles.body16M(),
                               ),
-                              SizedBox(height: 10),
+                              SizedBox(height: 16),
                               SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Wrap(
@@ -134,15 +156,6 @@ class _MBTIInfoScreenState extends State<MBTIInfoScreen> {
                             ],
                           ),
                         ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment(0.5, -0.4),
-                      child: Image.asset(
-                        'assets/images/${mbtiList[index].type.toLowerCase()}.png',
-                        width: 100,
-                        height: 150,
-                        fit: BoxFit.cover,
                       ),
                     ),
                     Align(
@@ -230,6 +243,9 @@ class _MBTIInfoScreenState extends State<MBTIInfoScreen> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 5, 0, 30),
                   child: Container(
+                    margin: EdgeInsets.symmetric(
+                      vertical: 16,
+                    ),
                     width: 120,
                     height: 5,
                     decoration: BoxDecoration(

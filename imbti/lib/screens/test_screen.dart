@@ -6,6 +6,7 @@ import 'package:imbti/models/questions_model.dart';
 import 'package:imbti/models/result_model.dart';
 import 'package:imbti/screens/reulst_screen.dart';
 import 'package:imbti/styles/app_colors.dart';
+import 'package:imbti/styles/app_text_style.dart';
 import 'package:imbti/widgets/main_button.dart';
 import 'package:imbti/widgets/main_drawer.dart';
 
@@ -25,7 +26,7 @@ class _TestScreenState extends State<TestScreen> {
   List<bool> isBChecked = List<bool>.filled(questionList.length, false);
   // AnswerModel answerA =
   //     AnswerModel(answer: List<bool>.filled(questionList.length, false));
-  final PageController _pageController = PageController(viewportFraction: 0.8);
+  final PageController _pageController = PageController(viewportFraction: 0.78);
 
   Scoring scoring = Scoring();
   @override
@@ -103,10 +104,7 @@ class _TestScreenState extends State<TestScreen> {
                                 Text(
                                   textAlign: TextAlign.start,
                                   questionList[index].content,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: AppTextStyles.header20(),
                                 ),
                                 Container(
                                   padding: EdgeInsets.symmetric(vertical: 8),

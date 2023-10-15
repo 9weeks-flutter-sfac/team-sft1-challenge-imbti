@@ -17,8 +17,8 @@ class StrengthChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 45,
-      height: 20,
+      width: 50,
+      height: 25,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20), color: AppColors.p4Color),
       child: Center(
