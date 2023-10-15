@@ -21,8 +21,10 @@ class _MBTIInfoScreenState extends State<MBTIInfoScreen> {
 
   @override
   void initState() {
+    Future.delayed(Duration(microseconds: 500), () {
+      pageController.addListener(pageChanged);
+    });
     super.initState();
-    pageController.addListener(pageChanged);
   }
 
   var pageController = PageController(initialPage: 0, viewportFraction: 0.5);
@@ -47,156 +49,161 @@ class _MBTIInfoScreenState extends State<MBTIInfoScreen> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      body: PageView.builder(
-        controller: pageController,
-        itemCount: mbtiList.length,
-        itemBuilder: (context, index) {
-          if (index == curPage) {
-            return Center(
-              child: Stack(
-                children: [
-                  Align(
-                    alignment: Alignment(0, 0.41),
-                    child: InkWell(
-                      onTap: () {
-                        showDraggableBottomSheet(context, mbtiList, index);
-                      },
-                      child: Container(
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          shape: BoxShape.circle,
+      body: AnimatedOpacity(
+        opacity: 1,
+        duration: Duration(milliseconds: 500),
+        curve: Curves.ease,
+        child: PageView.builder(
+          controller: pageController,
+          itemCount: mbtiList.length,
+          itemBuilder: (context, index) {
+            if (index == curPage) {
+              return Center(
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment(0, 0.41),
+                      child: InkWell(
+                        onTap: () {
+                          showDraggableBottomSheet(context, mbtiList, index);
+                        },
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            shape: BoxShape.circle,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 200,
-                      height: 280,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: Colors.black,
-                          width: 2,
-                        ),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        width: 200,
+                        height: 280,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
                             color: Colors.black,
-                            offset: Offset(0, 4),
+                            width: 2,
                           ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              mbtiList[index].type,
-                              style: AppTextStyles.header24(),
-                            ),
-                            Text(
-                              mbtiList[index].description,
-                              style: AppTextStyles.body16M(),
-                            ),
-                            SizedBox(height: 10),
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Wrap(
-                                spacing: 4,
-                                children: [
-                                  StrengthChip(
-                                      mbtiList: mbtiList,
-                                      index: index,
-                                      strengthsIndex: 0),
-                                  StrengthChip(
-                                      mbtiList: mbtiList,
-                                      index: index,
-                                      strengthsIndex: 1),
-                                  StrengthChip(
-                                      mbtiList: mbtiList,
-                                      index: index,
-                                      strengthsIndex: 2),
-                                ],
-                              ),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black,
+                              offset: Offset(0, 4),
                             ),
                           ],
                         ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment(0.5, -0.4),
-                    child: Image.asset(
-                      'assets/images/${mbtiList[index].type.toLowerCase()}.png',
-                      width: 100,
-                      height: 150,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment(0, 0.4),
-                    child: InkWell(
-                      onTap: () {
-                        showDraggableBottomSheet(context, mbtiList, index);
-                      },
-                      child: Container(
-                        width: 68,
-                        height: 68,
-                        decoration: BoxDecoration(
-                          color: AppColors.p3Color,
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 8,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                mbtiList[index].type,
+                                style: AppTextStyles.header24(),
+                              ),
+                              Text(
+                                mbtiList[index].description,
+                                style: AppTextStyles.body16M(),
+                              ),
+                              SizedBox(height: 10),
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Wrap(
+                                  spacing: 4,
+                                  children: [
+                                    StrengthChip(
+                                        mbtiList: mbtiList,
+                                        index: index,
+                                        strengthsIndex: 0),
+                                    StrengthChip(
+                                        mbtiList: mbtiList,
+                                        index: index,
+                                        strengthsIndex: 1),
+                                    StrengthChip(
+                                        mbtiList: mbtiList,
+                                        index: index,
+                                        strengthsIndex: 2),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        child: Icon(
-                          Icons.menu,
-                          color: Colors.white,
-                          size: 34,
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment(0.5, -0.4),
+                      child: Image.asset(
+                        'assets/images/${mbtiList[index].type.toLowerCase()}.png',
+                        width: 100,
+                        height: 150,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment(0, 0.4),
+                      child: InkWell(
+                        onTap: () {
+                          showDraggableBottomSheet(context, mbtiList, index);
+                        },
+                        child: Container(
+                          width: 68,
+                          height: 68,
+                          decoration: BoxDecoration(
+                            color: AppColors.p3Color,
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 8,
+                            ),
+                          ),
+                          child: Icon(
+                            Icons.menu,
+                            color: Colors.white,
+                            size: 34,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            );
-          } else {
-            return Center(
-              child: Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 200,
-                      height: 200,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: AppColors.b7,
+                  ],
+                ),
+              );
+            } else {
+              return Center(
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        width: 200,
+                        height: 200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: AppColors.b7,
+                        ),
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment(0, -0.1),
-                    child: Image.asset(
-                      'assets/images/${mbtiList[index].type.toLowerCase()}.png',
-                      width: 120,
-                      height: 200,
-                      fit: BoxFit.cover,
-                      colorBlendMode: BlendMode.darken,
+                    Align(
+                      alignment: Alignment(0, -0.1),
+                      child: Image.asset(
+                        'assets/images/${mbtiList[index].type.toLowerCase()}.png',
+                        width: 120,
+                        height: 200,
+                        fit: BoxFit.cover,
+                        colorBlendMode: BlendMode.darken,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            );
-          }
-        },
+                  ],
+                ),
+              );
+            }
+          },
+        ),
       ),
     );
   }
