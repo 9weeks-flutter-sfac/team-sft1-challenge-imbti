@@ -44,6 +44,7 @@ class _MBTIInfoScreenState extends State<MBTIInfoScreen> {
         elevation: 0.0,
         title: Text(
           'MBTI 대백과',
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       body: PageView.builder(
@@ -103,7 +104,7 @@ class _MBTIInfoScreenState extends State<MBTIInfoScreen> {
                               mbtiList[index].description,
                               style: AppTextStyles.body16M(),
                             ),
-                            SizedBox(height: 18),
+                            SizedBox(height: 10),
                             SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Wrap(
@@ -130,11 +131,11 @@ class _MBTIInfoScreenState extends State<MBTIInfoScreen> {
                     ),
                   ),
                   Align(
-                    alignment: Alignment(0, -0.5),
+                    alignment: Alignment(0.5, -0.4),
                     child: Image.asset(
                       'assets/images/${mbtiList[index].type.toLowerCase()}.png',
-                      width: 120,
-                      height: 200,
+                      width: 100,
+                      height: 150,
                       fit: BoxFit.cover,
                     ),
                   ),

@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/images/logo.png'),
-            SizedBox(height: 20),
+            SizedBox(height: 20.0),
             MainButton(
               onTap: () {
                 Navigator.push(

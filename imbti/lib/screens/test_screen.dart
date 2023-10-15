@@ -70,7 +70,7 @@ class _TestScreenState extends State<TestScreen> {
                             child: Text(
                               '문제 ${index + 1}',
                               style: TextStyle(
-                                fontSize: 24,
+                                fontSize: 22,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -104,7 +104,7 @@ class _TestScreenState extends State<TestScreen> {
                                   textAlign: TextAlign.start,
                                   questionList[index].content,
                                   style: TextStyle(
-                                    fontSize: 24,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -114,7 +114,7 @@ class _TestScreenState extends State<TestScreen> {
                                     top: 16,
                                   ),
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [

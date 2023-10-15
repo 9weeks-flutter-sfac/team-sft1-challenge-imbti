@@ -23,7 +23,7 @@ class AppTextStyles {
   static TextStyle body14B({Color color = Colors.black}) =>
       semiBold.copyWith(fontSize: 14, color: color);
   static TextStyle body14M({Color color = Colors.black}) =>
-      medium.copyWith(fontSize: 14, color: color);
+      medium.copyWith(fontSize: 12, color: color);
   static TextStyle body12B({Color color = Colors.black}) =>
       semiBold.copyWith(fontSize: 12, color: color);
   static TextStyle body12M({Color color = Colors.black}) =>
