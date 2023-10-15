@@ -110,6 +110,9 @@ class _TestScreenState extends State<TestScreen> {
                                 ),
                                 Container(
                                   padding: EdgeInsets.symmetric(vertical: 8),
+                                  margin: EdgeInsets.only(
+                                    top: 16,
+                                  ),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
@@ -199,8 +202,8 @@ class _TestScreenState extends State<TestScreen> {
               ),
             ),
             if (allAnswered)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              Container(
+                margin: EdgeInsets.only(bottom: 24),
                 child: MainButton(
                   onTap: () {
                     final result = scoring.getResult();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppTextStyles {
   static const semiBold =
-      TextStyle(fontFamily: 'Pretendard', fontWeight: FontWeight.w600);
+      TextStyle(fontFamily: 'Pretendard', fontWeight: FontWeight.w900);
   static const medium =
       TextStyle(fontFamily: 'Pretendard', fontWeight: FontWeight.w500);
   static const regular =

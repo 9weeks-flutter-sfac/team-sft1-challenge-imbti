@@ -32,26 +32,23 @@ class ResultScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       resultModel.mbti,
                       style: TextStyle(
-                        fontSize: 50,
+                        fontSize: 32,
                         fontWeight: FontWeight.w900,
                       ),
                     ),
-                    Text(mbtiName['${resultModel.mbti.toUpperCase()}']!),
+                    Text(
+                      mbtiName[resultModel.mbti.toUpperCase()]!,
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
                   ],
                 ),
-                Container(
-                  height: 150,
-                  width: 150,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/' + src + '.png'),
-                    ),
-                  ),
-                )
               ],
             ),
           ),
@@ -85,31 +82,68 @@ class ResultScreen extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: ListView(
-                  padding: EdgeInsets.all(0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 24,
+                ),
+                child: Stack(
+                  clipBehavior: Clip.none,
                   children: [
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        resultModel.description,
-                        style: TextStyle(
-                          fontSize: 18,
+                    Positioned(
+                      top: -120,
+                      left: 80,
+                      child: Container(
+                        height: 300,
+                        width: 300,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/$src.png'),
+                          ),
                         ),
                       ),
                     ),
-                    Container(
-                      alignment: Alignment.bottomRight,
+                    ListView(
+                      padding: EdgeInsets.all(0),
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(right: 32),
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            resultModel.description,
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Positioned(
+                      bottom: -24,
+                      right: 0,
                       child: TextButton(
                         onPressed: () {
                           showDraggableBottomSheet(context);
                         },
-                        child: Text(
-                          '자세히 보기 >',
-                          style: TextStyle(color: Colors.grey[600]),
+                        child: Container(
+                          color: Colors.white,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                '자세히 보기',
+                                style: TextStyle(
+                                  color: Colors.grey[600],
+                                ),
+                              ),
+                              Icon(
+                                Icons.navigate_next,
+                                color: Colors.grey[600],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -119,12 +153,13 @@ class ResultScreen extends StatelessWidget {
             height: 60,
           ),
           Center(
-              child: MainButton(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => TestScreen()));
-                  },
-                  buttonText: '다시 검사하기'))
+            child: MainButton(
+                onTap: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => TestScreen()));
+                },
+                buttonText: '다시 검사하기'),
+          )
         ],
       ),
     );
@@ -151,6 +186,9 @@ class ResultScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 5, 0, 30),
                   child: Container(
+                    margin: EdgeInsets.symmetric(
+                      vertical: 16,
+                    ),
                     width: 120,
                     height: 5,
                     decoration: BoxDecoration(
@@ -165,10 +203,13 @@ class ResultScreen extends StatelessWidget {
                     controller: scrollController,
                     children: [
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            resultModel.mbti,
-                            style: AppTextStyles.header24(),
+                          Center(
+                            child: Text(
+                              resultModel.mbti,
+                              style: AppTextStyles.header24(),
+                            ),
                           ),
                           SizedBox(height: 20),
                           Padding(
@@ -176,7 +217,7 @@ class ResultScreen extends StatelessWidget {
                                 const EdgeInsets.symmetric(horizontal: 10.0),
                             child: Text(
                               description[resultModel.mbti.toUpperCase()],
-                              style: AppTextStyles.regular,
+                              style: AppTextStyles.body16M(),
                             ),
                           ),
                         ],
